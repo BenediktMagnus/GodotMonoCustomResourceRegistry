@@ -63,7 +63,7 @@ public class Plugin : EditorPlugin
     private void AddRegisteredType(Type type, string defaultBaseTypeName, File file)
     {
         var attribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(type, typeof(RegisteredTypeAttribute));
-        String path = FindClassPath(type);
+        string path = FindClassPath(type);
         if (path == null && !file.FileExists(path))
             return;
 
