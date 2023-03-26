@@ -126,7 +126,7 @@ public class Plugin : EditorPlugin
             case Settings.ResourceSearchType.Namespace:
                 return FindClassPathNamespace(type);
             default:
-                throw new Exception($"ResourceSearchType {Settings.SearchType} not implemented!");
+                throw new NotImplementedException($"ResourceSearchType {Settings.SearchType} not implemented!");
         }
     }
 
