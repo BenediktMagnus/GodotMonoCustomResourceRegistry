@@ -135,15 +135,12 @@ public class Plugin : EditorPlugin
 
     private static string FindClassPath(Type type)
     {
-        switch (Settings.SearchType)
+        return Settings.SearchType switch
         {
-            case Settings.ResourceSearchType.Recursive:
-                return FindClassPathRecursive(type);
-            case Settings.ResourceSearchType.Namespace:
-                return FindClassPathNamespace(type);
-            default:
-                throw new NotImplementedException($"ResourceSearchType {Settings.SearchType} not implemented!");
-        }
+            Settings.ResourceSearchType.Recursive => FindClassPathRecursive(type),
+            Settings.ResourceSearchType.Namespace => FindClassPathNamespace(type),
+            _ => throw new NotImplementedException($"ResourceSearchType {Settings.SearchType} not implemented!"),
+        };
     }
 
     private static string FindClassPathNamespace(Type type)
