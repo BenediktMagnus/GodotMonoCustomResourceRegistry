@@ -16,7 +16,7 @@ public class BetaResource : Resource
     }
 
     [Export]
-    public float[] FloatArrayField { get; set; } = new float[0];
+    public float[] FloatArrayField { get; set; } = Array.Empty<float>();
     [Export]
     public float FloatField { get; set; } = 0;
     [Export]

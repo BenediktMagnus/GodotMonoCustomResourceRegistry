@@ -12,7 +12,7 @@ public class GammaResource : Resource
     }
 
     [Export]
-    public BetaResource[] BetaArray { get; set; } = new BetaResource[0];
+    public BetaResource[] BetaArray { get; set; } = Array.Empty<BetaResource>();
     [Export]
     public string TextField { get; set; } = "";
 
