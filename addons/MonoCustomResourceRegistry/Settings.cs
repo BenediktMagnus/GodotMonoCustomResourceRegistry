@@ -33,7 +33,10 @@ public static class Settings
     {
         title = SettingPath(title);
         if (!ProjectSettings.HasSetting(title))
+        {
             ProjectSettings.SetSetting(title, value);
+        }
+
         var info = new Dictionary
         {
             ["name"] = title,

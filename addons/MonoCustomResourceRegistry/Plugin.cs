@@ -54,10 +54,16 @@ public class Plugin : EditorPlugin
         var file = new File();
 
         foreach (Type type in GetCustomRegisteredTypes())
+        {
             if (type.IsSubclassOf(typeof(Resource)))
+            {
                 AddRegisteredType(type, nameof(Resource), file);
+            }
             else
+            {
                 AddRegisteredType(type, nameof(Node), file);
+            }
+        }
     }
 
     private void AddRegisteredType(Type type, string defaultBaseTypeName, File file)
@@ -65,15 +71,21 @@ public class Plugin : EditorPlugin
         var attribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(type, typeof(RegisteredTypeAttribute));
         string path = FindClassPath(type);
         if (path == null && !file.FileExists(path))
+        {
             return;
+        }
 
         Script script = GD.Load<Script>(path);
         if (script == null)
+        {
             return;
+        }
 
         string baseTypeName = defaultBaseTypeName;
         if (attribute.baseType != "")
+        {
             baseTypeName = attribute.baseType;
+        }
 
         ImageTexture icon = null;
         string iconPath = attribute.iconPath;
@@ -106,10 +118,14 @@ public class Plugin : EditorPlugin
                     icon.CreateFromImage(image);
                 }
                 else
+                {
                     GD.PushError($"Could not load the icon for the registered type \"{type.FullName}\" at path \"{path}\".");
+                }
             }
             else
+            {
                 GD.PushError($"The icon path of \"{path}\" for the registered type \"{type.FullName}\" does not exist.");
+            }
         }
 
         AddCustomType($"{Settings.ClassPrefix}{type.Name}", baseTypeName, script, icon);
@@ -137,7 +153,9 @@ public class Plugin : EditorPlugin
             string filePath = $"{dir}/{type.Namespace?.Replace(".", "/") ?? ""}/{type.Name}.cs";
             var file = new File();
             if (file.FileExists(filePath))
+            {
                 return filePath;
+            }
         }
         return null;
     }
@@ -148,7 +166,9 @@ public class Plugin : EditorPlugin
         {
             string fileFound = FindClassPathRecursiveHelper(type, directory);
             if (fileFound != null)
+            {
                 return fileFound;
+            }
         }
         return null;
     }
@@ -167,9 +187,13 @@ public class Plugin : EditorPlugin
 
                 // Skips hidden files like .
                 if (fileOrDirName == "")
+                {
                     break;
+                }
                 else if (fileOrDirName.BeginsWith("."))
+                {
                     continue;
+                }
                 else if (dir.CurrentIsDir())
                 {
                     string foundFilePath = FindClassPathRecursiveHelper(type, dir.GetCurrentDir() + "/" + fileOrDirName);
@@ -180,7 +204,9 @@ public class Plugin : EditorPlugin
                     }
                 }
                 else if (fileOrDirName == $"{type.Name}.cs")
+                {
                     return dir.GetCurrentDir() + "/" + fileOrDirName;
+                }
             }
         }
         return null;
