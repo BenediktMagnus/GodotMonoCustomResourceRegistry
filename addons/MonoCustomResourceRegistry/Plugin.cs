@@ -51,7 +51,7 @@ public class Plugin : EditorPlugin
     {
         customTypes.Clear();
 
-        File file = new File();
+        var file = new File();
 
         foreach (Type type in GetCustomRegisteredTypes())
             if (type.IsSubclassOf(typeof(Resource)))
@@ -62,7 +62,7 @@ public class Plugin : EditorPlugin
 
     private void AddRegisteredType(Type type, string defaultBaseTypeName, File file)
     {
-        RegisteredTypeAttribute attribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(type, typeof(RegisteredTypeAttribute));
+        var attribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(type, typeof(RegisteredTypeAttribute));
         String path = FindClassPath(type);
         if (path == null && !file.FileExists(path))
             return;
@@ -82,7 +82,7 @@ public class Plugin : EditorPlugin
             Type baseType = type.BaseType;
             while (baseType != null)
             {
-                RegisteredTypeAttribute baseTypeAttribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(baseType, typeof(RegisteredTypeAttribute));
+                var baseTypeAttribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(baseType, typeof(RegisteredTypeAttribute));
                 if (baseTypeAttribute != null && baseTypeAttribute.iconPath != "")
                 {
                     iconPath = baseTypeAttribute.iconPath;
@@ -135,7 +135,7 @@ public class Plugin : EditorPlugin
         foreach (string dir in Settings.ResourceScriptDirectories)
         {
             string filePath = $"{dir}/{type.Namespace?.Replace(".", "/") ?? ""}/{type.Name}.cs";
-            File file = new File();
+            var file = new File();
             if (file.FileExists(filePath))
                 return filePath;
         }
@@ -155,7 +155,7 @@ public class Plugin : EditorPlugin
 
     private static string FindClassPathRecursiveHelper(Type type, string directory)
     {
-        Directory dir = new Directory();
+        var dir = new Directory();
 
         if (dir.Open(directory) == Error.Ok)
         {
