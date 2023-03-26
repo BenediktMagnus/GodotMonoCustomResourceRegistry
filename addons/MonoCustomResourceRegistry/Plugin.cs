@@ -7,7 +7,7 @@ using Godot;
 // Originally written by wmigor
 // Edited by Atlinx to recursively search for files.
 // wmigor's Public Repo: https://github.com/wmigor/godot-mono-custom-resource-register
-namespace MonoCustomResourceRegistry;
+namespace GodotCustomResource;
 
 [Tool]
 public class Plugin : EditorPlugin

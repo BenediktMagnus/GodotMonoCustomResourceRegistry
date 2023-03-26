@@ -3,7 +3,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 
-namespace MonoCustomResourceRegistry;
+namespace GodotCustomResource;
 
 public static class Settings
 {

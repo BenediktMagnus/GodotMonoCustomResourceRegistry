@@ -1,6 +1,6 @@
 using System;
 
-namespace MonoCustomResourceRegistry;
+namespace GodotCustomResource;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class RegisteredTypeAttribute : Attribute

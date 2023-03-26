@@ -1,6 +1,6 @@
 using System;
 using Godot;
-using MonoCustomResourceRegistry;
+using GodotCustomResource;
 
 [RegisteredType(nameof(BetaResource), "res://Testing/icon.png")]
 public class BetaResource : Resource

@@ -1,5 +1,5 @@
 using Godot;
-using MonoCustomResourceRegistry;
+using GodotCustomResource;
 
 [RegisteredType(nameof(CustomNodeDemo), "res://Testing/icon.png", nameof(Node2D))]
 public class CustomNodeDemo : Node2D
