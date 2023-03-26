@@ -12,7 +12,6 @@ using Godot;
 // wmigor's Public Repo: https://github.com/wmigor/godot-mono-custom-resource-register
 namespace MonoCustomResourceRegistry
 {
-	#if TOOLS
 	[Tool]
 	public class Plugin : EditorPlugin
 	{
@@ -213,5 +212,4 @@ namespace MonoCustomResourceRegistry
 			RefreshCustomClasses();
 		}
 	}
-	#endif
 }
