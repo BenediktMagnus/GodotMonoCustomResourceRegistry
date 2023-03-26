@@ -1,10 +1,9 @@
-using Godot;
 using System;
 
 namespace MonoCustomResourceRegistry;
 
-[AttributeUsage(System.AttributeTargets.Class)]
-public class RegisteredTypeAttribute : System.Attribute
+[AttributeUsage(AttributeTargets.Class)]
+public class RegisteredTypeAttribute : Attribute
 {
 	public string name;
 	public string iconPath;
