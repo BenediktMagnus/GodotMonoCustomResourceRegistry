@@ -30,7 +30,7 @@ public class Plugin : EditorPlugin
 
         Settings.Init();
         RefreshCustomClasses();
-        GD.PushWarning("You may change any setting for MonoCustomResourceRegistry in Project -> ProjectSettings -> General -> MonoCustomResourceRegistry");
+        GD.PushWarning($"You may change any setting for {Settings.SettingsPath} in Project -> ProjectSettings -> General -> {Settings.SettingsPath}");
     }
 
     public override void _ExitTree()

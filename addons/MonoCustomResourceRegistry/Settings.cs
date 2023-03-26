@@ -7,6 +7,8 @@ namespace MonoCustomResourceRegistry;
 
 public static class Settings
 {
+    public const string SettingsPath = "MonoCustomResourceRegistry";
+
     public enum ResourceSearchType
     {
         Recursive = 0,
@@ -26,7 +28,7 @@ public static class Settings
 
     private static object GetSettings(string title)
     {
-        return ProjectSettings.GetSetting($"{nameof(MonoCustomResourceRegistry)}/{title}");
+        return ProjectSettings.GetSetting($"{SettingsPath}/{title}");
     }
 
     private static void AddSetting(string title, Variant.Type type, object value, PropertyHint hint = PropertyHint.None, string hintString = "")
@@ -47,5 +49,5 @@ public static class Settings
         ProjectSettings.AddPropertyInfo(info);
     }
 
-    private static string SettingPath(string title) => $"{nameof(MonoCustomResourceRegistry)}/{title}";
+    private static string SettingPath(string title) => $"{SettingsPath}/{title}";
 }
