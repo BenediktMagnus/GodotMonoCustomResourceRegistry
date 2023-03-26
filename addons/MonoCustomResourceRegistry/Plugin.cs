@@ -62,7 +62,7 @@ public class Plugin : EditorPlugin
 
 	private void AddRegisteredType(Type type, string defaultBaseTypeName, File file)
 	{
-		RegisteredTypeAttribute attribute = (RegisteredTypeAttribute) Attribute.GetCustomAttribute(type, typeof(RegisteredTypeAttribute));
+		RegisteredTypeAttribute attribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(type, typeof(RegisteredTypeAttribute));
 		String path = FindClassPath(type);
 		if (path == null && !file.FileExists(path))
 			return;
@@ -75,7 +75,7 @@ public class Plugin : EditorPlugin
 		if (attribute.baseType != "")
 			baseTypeName = attribute.baseType;
 
-			ImageTexture icon = null;
+		ImageTexture icon = null;
 		string iconPath = attribute.iconPath;
 		if (iconPath == "")
 		{
@@ -100,13 +100,15 @@ public class Plugin : EditorPlugin
 				if (rawIcon != null)
 				{
 					Image image = rawIcon.GetData();
-					int length = (int) Mathf.Round(16 * GetEditorInterface().GetEditorScale());
+					int length = (int)Mathf.Round(16 * GetEditorInterface().GetEditorScale());
 					image.Resize(length, length);
 					icon = new ImageTexture();
 					icon.CreateFromImage(image);
-				} else
+				}
+				else
 					GD.PushError($"Could not load the icon for the registered type \"{type.FullName}\" at path \"{path}\".");
-			} else
+			}
+			else
 				GD.PushError($"The icon path of \"{path}\" for the registered type \"{type.FullName}\" does not exist.");
 		}
 

@@ -1,10 +1,10 @@
-using Godot;
 using System;
+using Godot;
 
 public class GammaResource : Resource
 {
-    public GammaResource() {}
-    
+    public GammaResource() { }
+
     public GammaResource(BetaResource[] betaArray, string textField)
     {
         BetaArray = betaArray;

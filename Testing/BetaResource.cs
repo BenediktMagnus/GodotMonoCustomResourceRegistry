@@ -1,11 +1,11 @@
-using Godot;
 using System;
+using Godot;
 using MonoCustomResourceRegistry;
 
 [RegisteredType(nameof(BetaResource), "res://Testing/icon.png")]
 public class BetaResource : Resource
 {
-    public BetaResource() {}
+    public BetaResource() { }
 
     public BetaResource(float[] floatArrayField, float floatField, string textField, string textField2)
     {

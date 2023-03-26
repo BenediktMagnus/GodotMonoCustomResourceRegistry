@@ -4,7 +4,7 @@ using MonoCustomResourceRegistry;
 [RegisteredType(nameof(AlphaResource), "")]
 public class AlphaResource : Resource
 {
-    public AlphaResource() {}
+    public AlphaResource() { }
 
     public AlphaResource(int integerField, string textField, BetaResource betaSubResource)
     {

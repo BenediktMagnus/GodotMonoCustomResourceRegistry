@@ -1,5 +1,5 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
 
 public class Test : Node
 {
@@ -22,7 +22,8 @@ public class Test : Node
         label.Text += "Resource One: " + resourceOne + "\n";
         label.Text += "Resource Two: " + resourceTwo + "\n";
         label.Text += "Resource List:\n";
-        foreach(Resource resource in resourceList) {
+        foreach (Resource resource in resourceList)
+        {
             label.Text += "\t" + resource + "\n";
         }
         // Weird Godot loading behaviour
@@ -35,10 +36,10 @@ public class Test : Node
         var betaSub = ResourceLoader.Load("res://Testing/AlphaNew.tres::1");
         GD.Print(betaSub);
         */
-        
+
         /*
         // Turns out Godot has native support for loading custom c# resources! Yayy!
-        
+
         var gdLoadedBeta = ResourceLoader.Load<BetaResource>("res://Testing/BetaTest.tres");
         GD.Print(gdLoadedBeta);
 
