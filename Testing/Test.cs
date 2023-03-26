@@ -4,15 +4,15 @@ using Godot;
 public class Test : Node
 {
     [Export]
-    public Resource resourceOne;
+    public Resource? resourceOne;
     [Export]
-    public Resource resourceTwo;
+    public Resource? resourceTwo;
     [Export]
-    public List<Resource> resourceList;
+    public List<Resource> resourceList = new List<Resource>();
 
     [Export]
-    public NodePath labelNodePath;
-    private Label label;
+    public NodePath? labelNodePath;
+    private Label? label;
 
     public override void _Ready()
     {

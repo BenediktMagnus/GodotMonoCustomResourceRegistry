@@ -18,7 +18,7 @@ public class AlphaResource : Resource
     [Export]
     public string TextField { get; set; } = "";
     [Export]
-    public BetaResource BetaSubResource { get; set; }
+    public BetaResource? BetaSubResource { get; set; }
 
     public override string ToString()
     {

@@ -17,7 +17,7 @@ public class Plugin : EditorPlugin
     // There isn't any automation we can do to fix that.
     // private Button MonoBuildButton => GetNode<Button>("/root/EditorNode/@@580/@@581/@@589/@@590/ToolButton");
     private readonly List<string> customTypes = new List<string>();
-    private Button refreshButton;
+    private Button? refreshButton;
 
     public override void _EnterTree()
     {
@@ -37,7 +37,7 @@ public class Plugin : EditorPlugin
     {
         UnregisterCustomClasses();
         RemoveControlFromContainer(CustomControlContainer.Toolbar, refreshButton);
-        refreshButton.QueueFree();
+        refreshButton?.QueueFree();
     }
 
     public void RefreshCustomClasses()
@@ -69,7 +69,7 @@ public class Plugin : EditorPlugin
     private void AddRegisteredType(Type type, string defaultBaseTypeName, File file)
     {
         var attribute = (RegisteredTypeAttribute)Attribute.GetCustomAttribute(type, typeof(RegisteredTypeAttribute));
-        string path = FindClassPath(type);
+        string? path = FindClassPath(type);
         if (path == null && !file.FileExists(path))
         {
             return;
@@ -87,7 +87,7 @@ public class Plugin : EditorPlugin
             baseTypeName = attribute.baseType;
         }
 
-        ImageTexture icon = null;
+        ImageTexture? icon = null;
         string iconPath = attribute.iconPath;
         if (iconPath == "")
         {
@@ -133,7 +133,7 @@ public class Plugin : EditorPlugin
         GD.Print($"Registered custom type: {type.Name} -> {path}");
     }
 
-    private static string FindClassPath(Type type)
+    private static string? FindClassPath(Type type)
     {
         return Settings.SearchType switch
         {
@@ -143,7 +143,7 @@ public class Plugin : EditorPlugin
         };
     }
 
-    private static string FindClassPathNamespace(Type type)
+    private static string? FindClassPathNamespace(Type type)
     {
         foreach (string dir in Settings.ResourceScriptDirectories)
         {
@@ -157,11 +157,11 @@ public class Plugin : EditorPlugin
         return null;
     }
 
-    private static string FindClassPathRecursive(Type type)
+    private static string? FindClassPathRecursive(Type type)
     {
         foreach (string directory in Settings.ResourceScriptDirectories)
         {
-            string fileFound = FindClassPathRecursiveHelper(type, directory);
+            string? fileFound = FindClassPathRecursiveHelper(type, directory);
             if (fileFound != null)
             {
                 return fileFound;
@@ -170,7 +170,7 @@ public class Plugin : EditorPlugin
         return null;
     }
 
-    private static string FindClassPathRecursiveHelper(Type type, string directory)
+    private static string? FindClassPathRecursiveHelper(Type type, string directory)
     {
         var dir = new Directory();
 
@@ -193,7 +193,7 @@ public class Plugin : EditorPlugin
                 }
                 else if (dir.CurrentIsDir())
                 {
-                    string foundFilePath = FindClassPathRecursiveHelper(type, dir.GetCurrentDir() + "/" + fileOrDirName);
+                    string? foundFilePath = FindClassPathRecursiveHelper(type, dir.GetCurrentDir() + "/" + fileOrDirName);
                     if (foundFilePath != null)
                     {
                         dir.ListDirEnd();
