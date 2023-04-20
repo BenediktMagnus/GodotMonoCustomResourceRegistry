@@ -17,7 +17,7 @@ public static class Settings
 
     public static string ClassPrefix => GetSettings(nameof(ClassPrefix)).ToString();
     public static ResourceSearchType SearchType => (ResourceSearchType)GetSettings(nameof(SearchType));
-    public static ReadOnlyCollection<string> ResourceScriptDirectories => new ReadOnlyCollection<string>(((Array)GetSettings(nameof(ResourceScriptDirectories))).Cast<string>().ToList());
+    public static ReadOnlyCollection<string> ResourceScriptDirectories => new(((Array)GetSettings(nameof(ResourceScriptDirectories))).Cast<string>().ToList());
 
     public static void Init()
     {

@@ -16,7 +16,7 @@ public class Plugin : EditorPlugin
     // and we can't be sure how long that is. I guess we have to leave refreshing to the user for now.
     // There isn't any automation we can do to fix that.
     // private Button MonoBuildButton => GetNode<Button>("/root/EditorNode/@@580/@@581/@@589/@@590/ToolButton");
-    private readonly List<string> customTypes = new List<string>();
+    private readonly List<string> customTypes = new();
     private Button? refreshButton;
 
     public override void _EnterTree()
