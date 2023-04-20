@@ -1,3 +1,5 @@
+#if TOOLS
+
 using System.Collections.ObjectModel;
 using System.Linq;
 using Godot;
@@ -51,3 +53,4 @@ public static class Settings
 
     private static string SettingPath(string title) => $"{SettingsPath}/{title}";
 }
+#endif
